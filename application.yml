@@ -1,0 +1,64 @@
+info:
+  id: ${spring.application.name}
+
+port:
+  book-cloud-config: 9000
+  book-web: 9100
+  book-api: 9200
+
+url:
+  protocol: http
+  book-api: ${url.protocol}://book-api:${port.book-api}
+  book-web: ${url.protocol}://book.com:${port.book-web}
+
+application:
+  api:
+    version-url:
+      v1: /v1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    health:
+      show-details: always
+
+logging:
+  level:
+    org.apache: WARN
+    org.apache.cxf: WARN
+    org.thymeleaf: WARN
+    org.springframework: WARN
+    org.springframework.aop.interceptor.PerformanceMonitorInterceptor: TRACE
+    org.springframework.aop.interceptor.CustomizableTraceInterceptor: TRACE
+    org.hibernate: WARN
+    com.netflix: WARN
+    springfox: WARN
+    com.zaxxer.hikari: WARN
+    io.lettuce: INFO
+    de.codecentric.boot.admin: WARN
+    io.netty.util: WARN
+    com.ulisesbocchio: WARN
+
+---
+spring:
+  profiles: local
+
+url:
+  protocol: http
+  book-api: ${url.protocol}://book-api:${port.book-api}
+  book-web: ${url.protocol}://book.com:${port.book-web}
+
+logging:
+  level:
+    jdbc.sqltiming: DEBUG
+    jdbc.resultsettable: DEBUG
+
+application:
+  api:
+    url: http://book-local.com
+
+---
+spring:
+  profiles: dev
