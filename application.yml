@@ -47,8 +47,8 @@ spring:
 
 url:
   protocol: http
-  book-api: ${url.protocol}://book-api:${port.book-api}
-  book-web: ${url.protocol}://book.com:${port.book-web}
+  book-api: ${url.protocol}://127.0.0.1:${port.book-api}
+  book-web: ${url.protocol}://127.0.0.1:${port.book-web}
 
 logging:
   level:
