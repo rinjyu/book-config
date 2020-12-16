@@ -52,6 +52,7 @@ url:
 
 logging:
   level:
+    root: DEBUG
     jdbc.sqltiming: DEBUG
     jdbc.resultsettable: DEBUG
 
